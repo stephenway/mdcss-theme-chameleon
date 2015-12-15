@@ -2,7 +2,7 @@
   "name": "mdcss-theme-chameleon",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.buehner-fry.com/scway/mdcss-theme-chameleon.git"
+    "url": "git+https://github.com/stephenway/mdcss-theme-chameleon.git"
   },
   "scripts": {
     "lint": "eslint . --ignore-path .eshintignore",
@@ -10,7 +10,7 @@
     "test": "npm run lint && npm run tape",
     "watch": "tape watch.js"
   },
-  "version": "2.0.1",
+  "version": "1.0.0",
   "watch": {
     "test": [
       "assets",
@@ -18,18 +18,18 @@
     ]
   },
   "author": {
-    "email": "scway@thenavisway.com",
+    "email": "stephen@stephenway.net",
     "name": "Stephen Way",
-    "url": "http://thenavisway.com"
+    "url": "http://stephenway.net"
   },
   "bugs": {
-    "url": "https://gitlab.buehner-fry.com/scway/mdcss-theme-chameleon/issues"
+    "url": "https://github.com/stephenway/mdcss-theme-chameleon/issues"
   },
   "dependencies": {
     "ejs": "^2.3.4",
     "object-assign": "^4.0.1"
   },
-  "description": "GitHub flavored theme for mdcss",
+  "description": "Reuse your stylesheet theme for mdcss",
   "devDependencies": {
     "chokidar": "^1.2.0",
     "eslint": "^1.9.0",
@@ -42,12 +42,11 @@
     "iojs": ">=2.0.0",
     "node": ">=0.12.0"
   },
-  "homepage": "https://github.com/jonathantneal/mdcss-github-theme#readme",
+  "homepage": "https://github.com/stephenway/mdcss-theme-chameleon#readme",
   "keywords": [
     "mdcss",
     "mdcss-theme",
     "theme"
   ],
-  "license": "CC0-1.0",
-  "private": true
+  "license": "CC0-1.0"
 }
