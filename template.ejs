@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="s-app t-default t-docs">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%- opts.title %></title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<script>examples=<%- JSON.stringify(opts.examples) %>;</script>
+<header class="c-bar--top">
+	<nav class="c-menu">
+		<% menu(list, 1) %>
+	</nav>
+</header>
+
+<main class="o-main">
+<div class="u-column--12">
+	<% sections(list, 2) %>
+	<footer>Last modified <%- lastModified() %>
+</div>
+</main>
+<script src="prism.js"></script>
+<script src="examples.js"></script>
+<script src="script.js"></script>
+<%
+
+function menu(children, depth) {
+	%>
+	<ul>
+		<% if (depth < 2) {
+				%>
+                                <li><h1 class="o-brand"></h1></li>
+				<%
+		}; %>
+
+		<% if (depth < 3) children.forEach(function (child) {
+			if (child.name) {
+				%>
+				<li>
+					<a href="#<%- child.name %>"><span><%= child.title %></span></a>
+					<% if (child.children) menu(child.children, depth + 1) %>
+				</li>
+				<%
+			}
+		}); %>
+	</ul>
+	<%
+}
+
+function sections(children, depth) {
+	depth = Math.max(Math.min(depth, 6), 1);
+
+	children.forEach(function (child) {
+		%>
+		<section<% if (child.name) { %> id="<%= child.name %>"<% } %>>
+			<% if (child.title) { %><%- '<h' + depth + '>' %><%= child.title %><%- '</h' + depth + '>' %><% } %>
+			<div>
+				<%- child.content %>
+				<% if (child.children) sections(child.children, depth + 1) %>
+			</div>
+		</section>
+		<%
+	});
+}
+
+function lastModified() {
+	var now = new Date();
+
+	var day = 'Sunday Monday Tuesday Wednesday Thursday Friday Saturday'.split(' ')[now.getDay()];
+
+	var month = 'January February March April May June July August September October November December'.split(' ')[now.getMonth()];
+
+	return day + ', ' + now.getDate() + ' ' + month + ' ' + now.getFullYear() + ' ' + now.getHours() + ':' + ('0' + now.getMinutes()).slice(-2);
+}
+
+%>
+</html>
